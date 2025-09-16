@@ -266,3 +266,15 @@ label {
     text-align: center;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.cardd img {
+    max-width: 850px;  /* 最大横幅を指定（例：850px） */
+    width: 100%;       /* カード幅に合わせて拡大縮小 */
+    height: auto;      /* 縦横比を維持 */
+    margin-bottom: 10px;
+    object-fit: contain; /* 画像の収まりを調整（coverでもOK） */
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto;
+    background: #f7f9fc;
+}
