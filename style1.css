@@ -197,20 +197,26 @@ label {
     background: linear-gradient(120deg, #e3eafc 0%, #cfd9e6 100%);
     border-radius: 18px;
     box-shadow: 0 8px 32px rgba(0, 64, 128, 0.10);
-    padding: 1px 1px;
-    margin: 30px auto;
-    max-width: 1300px;
+    padding: 20px;              /* 内側の余白を少し広げると見栄えが良くなります */
+    margin: 0;                  /* 上下の余白をなくす（必要なら調整） */
+    width: 100vw;               /* ビューポート幅いっぱいに広げる */
+    max-width: none;            /* 最大幅の制限を解除 */
     text-align: center;
+    box-sizing: border-box;     /* paddingを含めて幅を計算するようにする */
 }
 
+
+
 .sbj-card img {
-    width: 100%;            /* 枠いっぱいに画像を表示 */
-    max-width: 1300%;       /* 枠より少し小さくする */
+    width: 100%;
+    height: auto;
+    object-fit: contain;
     border-radius: 16px;
     box-shadow: 0 4px 24px rgba(0,64,128,0.08);
     margin-bottom: 18px;
     background: #fff;
 }
+
 
 .sbj-card h2 {
     color: #004080;
