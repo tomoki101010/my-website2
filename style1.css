@@ -267,12 +267,14 @@ label {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.cardd img {
-    width: 300px;           /* 横幅を固定 */
-    height: 200px;          /* 高さを固定 */
-    object-fit: cover;      /* 枠に合わせて切り取り表示 */
+.cardd {
+    background: #fff;
     border-radius: 12px;
-    display: block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 320px; /* 画像サイズ＋余白に合わせて調整 */
     margin: 0 auto;
-    background: #f7f9fc;
 }
+
