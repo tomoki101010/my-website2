@@ -267,33 +267,16 @@ label {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-@media screen and (max-width: 600px) {
-  .cardd {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .cardd img {
-    width: 100%;           /* 画面幅に合わせて表示 */
-    height: auto;          /* 縦横比を維持 */
+.cardd img {
+    max-width: 100%;
+    max-height: 200px;
+    width: auto;
+    height: auto;
     object-fit: contain;
-  }
-
-  .card-grid {
-    grid-template-columns: 1fr; /* 1列表示に変更 */
-  }
-
-  h2 {
-    font-size: 1.2rem;
-  }
-
-  .cardd h3 {
-    font-size: 1rem;
-  }
-
-  .cardd p {
-    font-size: 0.9rem;
-  }
+    background-color: #fff;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto 10px auto;
 }
 
 
