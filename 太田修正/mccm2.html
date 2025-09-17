@@ -204,7 +204,9 @@
 
             let results = data.filter(person => {
                 return Object.keys(selected).every(category => {
-                    return selected[category].includes(person[category]);
+                     return Array.isArray(person[category])
+    ? person[category].some(val => selected[category].includes(val))
+    : selected[category].includes(person[category]);
                 });
             });
 
@@ -229,5 +231,6 @@
             // 結果エリアをクリア
             document.getElementById("results").innerHTML = "";
         }
+
 
     </script>
