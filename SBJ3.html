@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SBJ</title>
+  <link rel="stylesheet" href="style1.css">
+  <style>
+    .category-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .cat-btn {
+      background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 12px 28px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cat-btn:hover,
+    .cat-btn:focus {
+      background: linear-gradient(90deg, #1976d2 0%, #21cbf3 100%);
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .filters strong {
+      display: none;
+    }
+
+    .filters div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .filters div label {
+      display: flex;
+      align-items: center;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .filters input[type="checkbox"] {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ヘッダー -->
+  <header>
+    <h1>SBJ</h1>
+    <nav>
+      <a href="index.html">ホーム</a>
+      <a href="MCCM3.html">MCCM</a>
+      <a href="JFA3.html">JFA</a>
+      <a href="eigyou3.html">新規営業</a>
+      <a href="conect3.html">マッチ</a>
+    </nav>
+  </header>
+
+  <!-- SBJ相関図 -->
+  <div class="sbj-card">
+    <h2>SBJ相関図</h2>
+    <img src="images/SBJsoukannzu.png">
+  </div>
+
+  <!-- 条件検索 -->
+  <section class="search-section">
+    <h2>条件を選んで検索</h2>
+    <!-- カテゴリ選択ボタン -->
+    <div id="categoryButtons" class="category-buttons">
+      <button type="button" class="cat-btn" data-category="club">部活・サークル</button>
+      <button type="button" class="cat-btn" data-category="hometown">出身地</button>
+      <button type="button" class="cat-btn" data-category="hobby">趣味</button>
+      <button type="button" class="cat-btn" data-category="work">業務内容</button>
+      <button type="button" class="cat-btn" data-category="food">好きな食べ物</button>
+      <button type="button" class="cat-btn" data-category="mbti">MBTI</button>
+    </div>
+    <div id="filters" class="filters"></div>
+
+    <div id="selectedList" style="text-align:center; margin-bottom:16px;"></div>
+
+    <div class="buttons" style="text-align:center;">
+      <button onclick="search()" class="btn">検索</button>
+      <button onclick="resetFilters()" class="btn reset">リセット</button>
+    </div>
+
+    <div id="results" class="results"></div>
+  </section>
+
+
+
+  <!-- 検索ロジック -->
+  <script>
+    const data = [
+      {
+        name: "多賀康晴",
+        club: "テニス",
+        hometown: "岡山県",
+        work: "PM",
+        food: ["寿司", "ラーメン"],
+        mbti: "INTP",
+        department: "リテペイ事業部 ペイメントソリ部 SBJ",
+        photo: "images/tagayasuharu.jpg"
+      },
+      {
+        name: "小坂正行",
+        club: ["水泳", "バンド"],
+        hometown: "埼玉県",
+        hobby: ["ゲーム", "ランニング", "料理", "万博"],
+        work: "運用保守",
+        food: ["チョコ", "ピザ", "餃子", "唐揚げ"],
+        mbti: "INTP",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/kosakamasayuki.jpg"
+      },
+      {
+        name: "原琢矢",
+        club: "軽音",
+        hometown: "埼玉県",
+        hobby: ["ゲーム", "バイク", "楽器", "酒"],
+        work: "開発",
+        food: ["焼きそば"],
+        mbti: "INTP",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/haratakuya.png"
+      },
+      {
+        name: "小宮山裕也",
+        club: "テニス",
+        hometown: "長野県",
+        hobby: ["ゲーム", "釣り"],
+        work: ["開発"],
+        food: ["寿司"],
+        mbti: "ISFJ",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/komiyamayuuya.jpg"
+      },
+      {
+        name: "釜田桃里",
+        club: ["バンド", "バスケ"],
+        hometown: "神奈川県",
+        hobby: ["旅行", "ショッピング", "漫画", "アニメ"],
+        work: "お客様先PJ支援",
+        food: "カニ",
+        mbti: "ISFP",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/kamatamomori.JPG"
+      },
+      {
+        name: "北澤優衣",
+        club: "吹奏楽",
+        hometown: "埼玉県",
+        work: "開発",
+        food: ["チョコ", "グミ"],
+        mbti: "INFJ",
+        department: "リテペイ事業部 リテールソリ部SBJ",
+        photo: "images/kitazawayui.jpg"
+      },
+      {
+        name: "小西ゆめか",
+        club: ["軽音", "漫研", "バレー"],
+        hometown: "東京都",
+        hobby: ["ゲーム", "お絵描き", "カラオケ"],
+        work: ["システムテスト", "開発"],
+        food: ["ラーメン"],
+        mbti: "ENTJ",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/konishiyumeka.jpg"
+      },
+      {
+        name: "中村崇太",
+        club: "ラグビー",
+        hometown: "秋田県",
+        hobby: ["ゲーム", "筋トレ", "コーヒードリップ"],
+        work: "運用保守",
+        food: "寿司",
+        mbti: "ISFP",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/nakamurasouta.jfif"
+      },
+      {
+        name: "篠田歩佳",
+        club: "吹奏楽",
+        hometown: "埼玉県",
+        hobby: ["旅行", "ネイル", "ショッピング", "スノボ", "カメラ", "カフェ巡り"],
+        work: "システムテスト",
+        food: ["寿司", "しゃぶしゃぶ", "甘い物"],
+        mbti: "ESFJ",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/shinodahonoka.jpg"
+      },
+      {
+        name: "福井愛優",
+        club: ["ソフトテニス", "ダンス"],
+        hometown: "東京都",
+        hobby: ["ネイル", "酒", "料理"],
+        food: ["寿司", "ラーメン", "白米", "餃子"],
+        mbti: "INFP",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/fukuiayu.jpg"
+      }
+    ];
+
+    const categories = {
+      club: {
+        label: "部活・サークル",
+        options: ["吹奏楽", "軽音", "テニス", "ソフトテニス", "ダンス", "漫研", "バレー", "水泳", "バンド", "ラグビー", "バスケ"]
+      },
+      hometown: {
+        label: "出身地",
+        options: ["埼玉県", "長野県", "東京都", "秋田県", "岡山県", "神奈川県"]
+      },
+      hobby: {
+        label: "趣味",
+        options: ["旅行", "ネイル", "ショッピング", "スノボ", "カメラ", "カフェ巡り", "ゲーム", "釣り", "バイク", "楽器", "酒", "お絵描き", "カラオケ", "ランニング", "料理", "万博", "筋トレ", "漫画", "アニメ", "コーヒードリップ"]
+      },
+      work: {
+        label: "業務内容",
+        options: ["システムテスト", "開発", "運用保守", "PM", "お客様先PJ支援"]
+      },
+      food: {
+        label: "好きな食べ物",
+        options: ["しゃぶしゃぶ", "寿司", "グミ", "チョコ", "焼きそば", "ラーメン", "白米", "ピザ", "餃子", "唐揚げ", "カニ"]
+      },
+      mbti: {
+        label: "MBTI",
+        options: ["ESFJ", "INFJ", "INTP", "ENTJ", "ISFP", "INFP", "ISFJ"]
+      }
+    };
+
+
+    const categoryLabels = {
+      club: "部活・サークル",
+      hometown: "出身地",
+      hobby: "趣味",
+      work: "業務内容",
+      food: "好きな食べ物",
+      mbti: "MBTI"
+    };
+
+
+    // ...existing code...
+    const filterDiv = document.getElementById("filters");
+    const selectedListDiv = document.getElementById("selectedList");
+    const selected = {};
+
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const category = this.getAttribute('data-category');
+        filterDiv.innerHTML = "";
+
+        const group = document.createElement("div");
+        group.innerHTML = `<strong>${categories[category].label}</strong><br>`;
+        categories[category].options.forEach(option => {
+          const checked = selected[category]?.includes(option) ? "checked" : "";
+          group.innerHTML += `
+        <label>
+          <input type="checkbox" name="${category}" value="${option}" ${checked}>
+          ${option}
+        </label>
+      `;
+        });
+        filterDiv.appendChild(group);
+
+        // チェック変更時に選択状態を更新
+        filterDiv.querySelectorAll(`input[name="${category}"]`).forEach(cb => {
+          cb.addEventListener('change', function () {
+            const value = this.value;
+            if (this.checked) {
+              if (!selected[category]) selected[category] = [];
+              if (!selected[category].includes(value)) selected[category].push(value);
+            } else {
+              selected[category] = selected[category].filter(v => v !== value);
+              if (selected[category].length === 0) delete selected[category];
+            }
+            updateSelectedList();
+          });
+        });
+      });
+    });
+
+    // 選択済み一覧を表示・更新
+    function updateSelectedList() {
+      selectedListDiv.innerHTML = "";
+      Object.keys(selected).forEach(category => {
+        selected[category].forEach(value => {
+          const item = document.createElement("span");
+          item.className = "tag";
+          item.style.margin = "4px";
+          item.innerHTML = `${categoryLabels[category]}：${value} <button style="margin-left:8px;" onclick="removeSelected('${category}', '${value}')">×</button>`;
+          selectedListDiv.appendChild(item);
+        });
+      });
+    }
+
+    // ×ボタンで選択解除
+    function removeSelected(category, value) {
+      selected[category] = selected[category].filter(v => v !== value);
+      if (selected[category].length === 0) delete selected[category];
+      updateSelectedList();
+
+      // チェックボックスが表示されている場合は連動して外す
+      const cb = document.querySelector(`input[name="${category}"][value="${value}"]`);
+      if (cb) cb.checked = false;
+    }
+
+    // 検索（OR条件）
+    function search() {
+      let results = data.filter(person => {
+        return Object.keys(selected).some(category => {
+          const value = person[category];
+          if (Array.isArray(value)) {
+            return value.some(val => selected[category].includes(val));
+          } else {
+            return selected[category].includes(value);
+          }
+        });
+      });
+
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = "";
+      if (results.length === 0) {
+        resultsDiv.innerHTML = "<p>該当なし</p>";
+      } else {
+        let html = '<div class="card-container">';
+        results.forEach(p => {
+          // 該当項目の抽出
+          let matchedConditions = Object.keys(selected).map(category => {
+            const label = categoryLabels[category] || category;
+            const personValue = p[category];
+            if (Array.isArray(personValue)) {
+              const matched = personValue.filter(val => selected[category].includes(val));
+              return matched.map(val => `<span class="tag">${label}：${val}</span>`).join(" ");
+            } else {
+              return selected[category].includes(personValue)
+                ? `<span class="tag">${label}：${personValue}</span>`
+                : "";
+            }
+          }).filter(Boolean).join(" ");
+
+          html += `
+        <div class="card">
+          <div class="card-info">
+            <h3>${p.name}</h3>
+            <p class="department">${p.department}</p>
+          </div>
+          <img src="${p.photo || 'images/noimage.png'}" alt="${p.name}">
+          ${matchedConditions ? `<div class="matched">${matchedConditions}</div>` : ""}
+        </div>
+      `;
+        });
+        html += "</div>";
+        resultsDiv.innerHTML = html;
+      }
+    }
+    // リセット
+    function resetFilters() {
+      for (const key in selected) {
+        delete selected[key];
+      }
+      filterDiv.innerHTML = "";
+      selectedListDiv.innerHTML = "";
+      document.getElementById("results").innerHTML = "";
+    }
+  </script>
+</body>
+
+
+</html>
