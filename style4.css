@@ -1,0 +1,70 @@
+/* style.css */
+
+/* 全体 */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f9ff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ヘッダー */
+header {
+  background: linear-gradient(90deg, #1e90ff, #4682b4);
+  color: white;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+/* 共通カード */
+.card {
+  background: white;
+  margin: 1.5rem auto;
+  padding: 1.8rem;
+  max-width: 800px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* リスト */
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card li {
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.card li::before {
+  content: "✔";
+  color: #1e90ff;
+  position: absolute;
+  left: 0;
+}
+
+/* 連絡先 */
+.contact {
+  text-align: center;
+  background: #e6f0ff;
+}
+
+/* フッター */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #1e3c72;
+  color: white;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
