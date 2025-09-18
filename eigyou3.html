@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+ 
+<head>
+    <meta charset="UTF-8">
+    <title>新規営業</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+ 
+        .cat-btn {
+            background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            padding: 12px 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
+            transition: background 0.2s, transform 0.2s;
+        }
+ 
+        .cat-btn:hover,
+        .cat-btn:focus {
+            background: linear-gradient(90deg, #1976d2 0%, #21cbf3 100%);
+            transform: translateY(-2px) scale(1.05);
+        }
+ 
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+ 
+        .filters strong {
+            display: none;
+        }
+ 
+        .filters div {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            width: 100%;
+        }
+ 
+        .filters div label {
+            display: flex;
+            align-items: center;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fff;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+ 
+        .filters input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+ 
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <h1>新規営業</h1>
+        <nav>
+            <a href="index.html">ホーム</a>
+            <a href="SBJ3.html">SBJ</a>
+            <a href="MCCM3.html">MCCM</a>
+            <a href="JFA3.html">JFA</a>
+            <a href="conect3.html">マッチ</a>
+        </nav>
+    </header>
+ 
+    <!-- 新規営業相関図 -->
+    <div class="sbj-card">
+        <h2>新規営業相関図</h2>
+        <img src="images/EIGYOUsoukannzu.png">
+    </div>
+ 
+    <!-- 条件検索 -->
+    <section class="search-section">
+        <h2>条件を選んで検索</h2>
+        <!-- カテゴリ選択ボタン -->
+        <div id="categoryButtons" class="category-buttons">
+            <button type="button" class="cat-btn" data-category="club">部活・サークル</button>
+            <button type="button" class="cat-btn" data-category="hometown">出身地</button>
+            <button type="button" class="cat-btn" data-category="hobby">趣味</button>
+            <button type="button" class="cat-btn" data-category="work">業務内容</button>
+            <button type="button" class="cat-btn" data-category="food">好きな食べ物</button>
+            <button type="button" class="cat-btn" data-category="mbti">MBTI</button>
+        </div>
+        <div id="filters" class="filters"></div>
+ 
+        <div id="selectedList" style="text-align:center; margin-bottom:16px;"></div>
+ 
+        <div class="buttons" style="text-align:center;">
+            <button onclick="search()" class="btn">検索</button>
+            <button onclick="resetFilters()" class="btn reset">リセット</button>
+        </div>
+ 
+        <div id="results" class="results"></div>
+    </section>
+ 
+    <script>
+        // サンプルデータ
+        const data = [
+            {
+                name: "中原敬之",
+                club: "バスケ",
+                hometown: "東京都",
+                hobby: ["スノボ", "サーフィン"],
+                work: "新規営業",
+                food: "寿司",
+                mbti: "ENFP",
+                department: "リテペイ事業部 リテペイ企画営業部 新規営業",
+                photo: "images/nakaharatakashi.png"
+            },
+ 
+            {
+                name: "柳田康汰",
+                club: "学生祭実行委員",
+                hometown: "大阪府",
+                hobby: "映画",
+                work: ["新規営業", "新規事業立ち上げ"],
+                food: "ラーメン",
+                mbti: "ENFP",
+                department: "リテペイ事業部 リテペイ企画営業部 新規営業",
+                photo: "images/yanagidakouta.jpg"
+            },
+ 
+            {
+                name: "黒籔華代",
+                club: "バスケ",
+                hometown: "岡山県",
+                hobby: "旅行",
+                work: "新規営業",
+                food: "お酒に合うおつまみ",
+                mbti: "ESFP",
+                department: "リテペイ事業部 リテペイ企画営業部 新規営業",
+                photo: "images/kuroyabukayo.png"
+            },
+ 
+            {
+                name: "白石太郎",
+                club: ["サッカー", "硬式テニス"],
+                hometown: "新潟県",
+                hobby: ["ドライブ", "部屋づくり", "ゴルフ"],
+                work: "新規営業",
+                food: ["焼肉", "寿司", "ラーメン"],
+                mbti: "ENFJ",
+                department: "リテペイ事業部 リテペイ企画営業部 新規営業",
+                photo: "images/shiraishitaro.jpg"
+            },
+ 
+            {
+                name: "宮原啓一郎",
+                club: ["サッカー", "ラクロス"],
+                hometown: "岩手県",
+                hobby: "サッカー観戦",
+                work: "新規営業",
+                food: "辛いもの",
+                mbti: "INFP",
+                department: "リテペイ事業部 リテペイ企画営業部 新規営業",
+                photo: "images/miyaharakeiitiro.jpg"
+            },
+ 
+            {
+                name: "岡部椋太",
+                club: "ソフトテニス",
+                hometown: "東京都",
+                hobby: "サウナ",
+                work: "新規営業",
+                food: "ココスのビーフハンバーグステーキ",
+                mbti: "ESFP",
+                department: "リテペイ事業部 リテペイ企画営業部 新規営業",
+                photo: "images/okaberyota.jpg"
+            },
+ 
+            {
+                name: "太田陽介",
+                club: "バスケ",
+                hometown: "大阪府",
+                hobby: "サッカー観戦",
+                work: "新規営業",
+                food: "すき焼き",
+                mbti: "ESFP",
+                department: "リテペイ事業部 リテペイ企画営業部 新規営業",
+                photo: "images/otayosuke.png"
+            }
+        ];
+        // チェックボックス用カテゴリ(eigyou)
+        const categories = {
+ 
+            club: {
+                label: "部活・サークル",
+                options: ["バスケ", "学生祭実行委員", "サッカー", "硬式テニス", "ラクロス", "ソフトテニス"]
+            },
+            hometown: {
+                label: "出身地",
+                options: ["東京都", "大阪府", "岡山県", "新潟県", "岩手県"]
+            },
+            hobby: {
+                label: "趣味",
+                options: ["スノボ", "サーフィン", "映画", "旅行", "ドライブ", "部屋づくり", "ゴルフ", "サッカー観戦", "サウナ"]
+            },
+            work: {
+                label: "業務内容",
+                options: ["新規営業", "新規事業立ち上げ"]
+            },
+            food: {
+                label: "好きな食べ物",
+                options: ["寿司", "ラーメン", "お酒に合うおつまみ", "焼肉", "辛いもの", "ココスのビーフハンバーグステーキ", "すき焼き"]
+            },
+            mbti: {
+                label: "MBTI",
+                options: ["ENFP", "ESFP", "ENFJ", "INFP"]
+            }
+        };
+ 
+        const categoryLabels = {
+            club: "部活・サークル",
+            hometown: "出身地",
+            hobby: "趣味",
+            work: "業務内容",
+            food: "好きな食べ物",
+            mbti: "MBTI"
+        };
+ 
+ 
+        const filterDiv = document.getElementById("filters");
+        const selectedListDiv = document.getElementById("selectedList");
+        const selected = {};
+ 
+        document.querySelectorAll('.cat-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const category = this.getAttribute('data-category');
+                filterDiv.innerHTML = "";
+ 
+                const group = document.createElement("div");
+                group.innerHTML = `<strong>${categories[category].label}</strong><br>`;
+                categories[category].options.forEach(option => {
+                    const checked = selected[category]?.includes(option) ? "checked" : "";
+                    group.innerHTML += `
+        <label>
+          <input type="checkbox" name="${category}" value="${option}" ${checked}>
+          ${option}
+        </label>
+      `;
+                });
+                filterDiv.appendChild(group);
+ 
+                // チェック変更時に選択状態を更新
+                filterDiv.querySelectorAll(`input[name="${category}"]`).forEach(cb => {
+                    cb.addEventListener('change', function () {
+                        const value = this.value;
+                        if (this.checked) {
+                            if (!selected[category]) selected[category] = [];
+                            if (!selected[category].includes(value)) selected[category].push(value);
+                        } else {
+                            selected[category] = selected[category].filter(v => v !== value);
+                            if (selected[category].length === 0) delete selected[category];
+                        }
+                        updateSelectedList();
+                    });
+                });
+            });
+        });
+ 
+        // 選択済み一覧を表示・更新
+        function updateSelectedList() {
+            selectedListDiv.innerHTML = "";
+            Object.keys(selected).forEach(category => {
+                selected[category].forEach(value => {
+                    const item = document.createElement("span");
+                    item.className = "tag";
+                    item.style.margin = "4px";
+                    item.innerHTML = `${categoryLabels[category]}：${value} <button style="margin-left:8px;" onclick="removeSelected('${category}', '${value}')">×</button>`;
+                    selectedListDiv.appendChild(item);
+                });
+            });
+        }
+ 
+        // ×ボタンで選択解除
+        function removeSelected(category, value) {
+            selected[category] = selected[category].filter(v => v !== value);
+            if (selected[category].length === 0) delete selected[category];
+            updateSelectedList();
+ 
+            // チェックボックスが表示されている場合は連動して外す
+            const cb = document.querySelector(`input[name="${category}"][value="${value}"]`);
+            if (cb) cb.checked = false;
+        }
+ 
+        // 検索（OR条件）
+        function search() {
+            let results = data.filter(person => {
+                return Object.keys(selected).some(category => {
+                    const value = person[category];
+                    if (Array.isArray(value)) {
+                        return value.some(val => selected[category].includes(val));
+                    } else {
+                        return selected[category].includes(value);
+                    }
+                });
+            });
+ 
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "";
+            if (results.length === 0) {
+                resultsDiv.innerHTML = "<p>該当なし</p>";
+            } else {
+                let html = '<div class="card-container">';
+                results.forEach(p => {
+                    // 該当項目の抽出
+                    let matchedConditions = Object.keys(selected).map(category => {
+                        const label = categoryLabels[category] || category;
+                        const personValue = p[category];
+                        if (Array.isArray(personValue)) {
+                            const matched = personValue.filter(val => selected[category].includes(val));
+                            return matched.map(val => `<span class="tag">${label}：${val}</span>`).join(" ");
+                        } else {
+                            return selected[category].includes(personValue)
+                                ? `<span class="tag">${label}：${personValue}</span>`
+                                : "";
+                        }
+                    }).filter(Boolean).join(" ");
+ 
+                    html += `
+        <div class="card">
+          <div class="card-info">
+            <h3>${p.name}</h3>
+            <p class="department">${p.department}</p>
+          </div>
+          <img src="${p.photo || 'images/noimage.png'}" alt="${p.name}">
+          ${matchedConditions ? `<div class="matched">${matchedConditions}</div>` : ""}
+        </div>
+      `;
+                });
+                html += "</div>";
+                resultsDiv.innerHTML = html;
+            }
+        }
+        // リセット
+        function resetFilters() {
+            for (const key in selected) {
+                delete selected[key];
+            }
+            filterDiv.innerHTML = "";
+            selectedListDiv.innerHTML = "";
+            document.getElementById("results").innerHTML = "";
+        }
+    </script>
+</body>
+ 
+ 
+</html>
+ 
