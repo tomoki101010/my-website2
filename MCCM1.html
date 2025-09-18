@@ -221,7 +221,6 @@
                 food: ["寿司", "梨"],
                 mbti: "ESFJ",
                 department: "リテペイ事業部 リテールソリ部 MCCM"
-                photo: "images/nakamuratomoki.jpg"
             }
         ];
 
@@ -280,9 +279,9 @@
             if (results.length === 0) {
                 resultsDiv.innerHTML = "<p>該当なし</p>";
             } else {
-                let html = "<table><tr><th>名前</th><th>photo</th></tr>";
+                let html = "<table><tr><th>名前</th></tr>";
                 results.forEach(p => {
-                    html += `<tr><td>${p.name}</td><td>${p.photo}</td></tr>`;
+                    html += `<tr><td>${p.name}</td></tr>`;
                 });
                 html += "</table>";
                 resultsDiv.innerHTML = html;
@@ -296,6 +295,7 @@
     </script>
 </body>
 </html>
+
 
 
 
