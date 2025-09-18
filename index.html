@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>社員限定ページ</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+  <!-- ログイン画面 -->
+  <div id="loginArea">
+    <h1>社用Googleアカウントでログインしてください</h1>
+    <button id="loginBtn">ログイン</button>
+  </div>
+
+  <!-- ログイン後に表示されるページ -->
+  <div id="content" style="display:none;">
+    <!-- ヘッダー -->
+    <header>
+      <h1>社内プロジェクト一覧</h1>
+      <nav>
+        <a href="SBJ3.html">SBJ</a>
+        <a href="MCCM3.html">MCCM</a>
+        <a href="JFA3.html">JFA</a>
+        <a href="eigyou3.html">新規営業</a>
+        <a href="conect3.html">マッチ</a>
+      </nav>
+    </header>
+
+    <!-- プロジェクト一覧 -->
+    <div class="container">
+      <h2>プロジェクト一覧</h2>
+      <div class="card-grid" id="projectList">
+        <div class="cardd">
+          <img src="images/starbacks.jpg">
+          <h3>SBJ</h3>
+          <a href="SBJ3.html">相関図へ</a>
+          <p>オンラインストア、店舗など様々なクライアントの決済処理を統合し、スターバックスカードやクレジットカードなどの接続先へ繋ぐPaymentHubを提供</p>
+        </div>
+        <div class="cardd">
+          <img src="images/matukiyo.png">
+          <h3>MCCM</h3>
+          <a href="MCCM3.html">相関図へ</a>
+          <p>顧客管理を中心に様々なサービスを提供、顧客の満足度向上を目指す</p>
+        </div>
+        <div class="cardd">
+          <img src="images/JFA.jpg">
+          <h3>JFA</h3>
+          <a href="JFA3.html">相関図へ</a>
+          <p>JFA業務内容（新規PJのため内容は定かじゃない）</p>
+        </div>
+        <div class="cardd">
+          <img src="images/oota.png">
+          <h3>新規営業</h3>
+          <a href="eigyou3.html">相関図へ</a>
+          <p>自分の欲しているサービスを顧客と共創する</p>
+        </div>
+      </div>
+    </div>
+    <button id="logoutBtn">ログアウト</button>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } 
+      from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+    // Firebase初期化
+    const firebaseConfig = {
+  apiKey: "AIzaSyANo5gJV8U5q5tDIyKBvbvWKfnHef7pEaw",
+  authDomain: "mofupage.firebaseapp.com",
+  projectId: "mofupage",
+  storageBucket: "mofupage.appspot.com",
+  messagingSenderId: "1000822913473",
+  appId: "1:1000822913473:web:ca4711fadfa327466ad740",
+  measurementId: "G-7J3QP846QP"
+};
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    // 毎回アカウント選択させる
+    provider.setCustomParameters({ prompt: "select_account" });
+
+    const loginArea = document.getElementById("loginArea");
+    const content = document.getElementById("content");
+
+    // 社員アカウント判定
+    function isEmployee(email) {
+      return email.startsWith("nbs") && email.endsWith("@gmail.com");
+    }
+
+    // ログイン処理
+    async function login() {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const email = result.user.email;
+        if (!isEmployee(email)) {
+          alert("社員専用アカウントのみ利用可能です");
+          await signOut(auth);
+          loginArea.style.display = "block";
+          content.style.display = "none";
+        }
+      } catch (error) {
+        console.error(error);
+        loginArea.style.display = "block";
+        content.style.display = "none";
+      }
+    }
+
+    document.getElementById("loginBtn").onclick = login;
+    document.getElementById("logoutBtn").onclick = async () => {
+      await signOut(auth);
+    };
+
+    // 認証状態監視
+    onAuthStateChanged(auth, (user) => {
+      if (user && isEmployee(user.email)) {
+        content.style.display = "block";
+        loginArea.style.display = "none";
+      } else {
+        content.style.display = "none";
+        loginArea.style.display = "block";
+      }
+    });
+  </script>
+</body>
+
+
