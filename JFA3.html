@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JFA</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .cat-btn {
+            background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            padding: 12px 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .cat-btn:hover,
+        .cat-btn:focus {
+            background: linear-gradient(90deg, #1976d2 0%, #21cbf3 100%);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .filters strong {
+            display: none;
+        }
+
+        .filters div {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .filters div label {
+            display: flex;
+            align-items: center;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fff;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .filters input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <h1>JFA</h1>
+        <nav>
+            <a href="index.html">ホーム</a>
+            <a href="SBJ3.html">SBJ</a>
+            <a href="MCCM3.html">MCCM</a>
+            <a href="eigyou3.html">新規営業</a>
+            <a href="conect3.html">マッチ</a>
+        </nav>
+    </header>
+
+    <!-- JFA相関図 -->
+    <div class="sbj-card">
+        <h2>JFA相関図</h2>
+        <img src="images/JFAsoukannzu.png">
+    </div>
+
+    <!-- 条件検索 -->
+    <section class="search-section">
+        <h2>条件を選んで検索</h2>
+        <!-- カテゴリ選択ボタン -->
+        <div id="categoryButtons" class="category-buttons">
+            <button type="button" class="cat-btn" data-category="club">部活・サークル</button>
+            <button type="button" class="cat-btn" data-category="hometown">出身地</button>
+            <button type="button" class="cat-btn" data-category="hobby">趣味</button>
+            <button type="button" class="cat-btn" data-category="work">業務内容</button>
+            <button type="button" class="cat-btn" data-category="food">好きな食べ物</button>
+            <button type="button" class="cat-btn" data-category="mbti">MBTI</button>
+        </div>
+        <div id="filters" class="filters"></div>
+
+        <div id="selectedList" style="text-align:center; margin-bottom:16px;"></div>
+
+        <div class="buttons" style="text-align:center;">
+            <button onclick="search()" class="btn">検索</button>
+            <button onclick="resetFilters()" class="btn reset">リセット</button>
+        </div>
+
+        <div id="results" class="results"></div>
+    </section>
+
+    <!-- 検索ロジック -->
+    <script>
+        const data = [
+            {
+                name: "菅野陽花",
+                club: "なし",
+                hometown: "福島県",
+                hobby: ["運動", "ゴルフ"],
+                //　↑　体を動かすこと
+                work: "管理職PM",
+                food: "和食",
+                mbti: "INFP",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/JFA/"
+            },
+            {
+                name: "深石友和",
+                club: "硬式テニス",
+                hometown: "神奈川県",
+                hobby: "散歩",
+                work: "要件定義",
+                food: ["ラーメン", "牛丼"],
+                mbti: "INFP",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/JFA/"
+            },
+            {
+                name: "五十嵐穂高",
+                club: ["剣道", "硬式テニス"],
+                hometown: "静岡県",
+                hobby: ["酒", "競馬"],
+                work: "お客様PMO",
+                food: ["焼肉", "寿司", "ラーメン"],
+                mbti: "ENFP",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/JFA/"
+            },
+            {
+                name: "塩沢祐一郎",
+                club: "帰宅",
+                hometown: "埼玉県",
+                hobby: ["音楽鑑賞", "料理"],
+                work: "要件定義",
+                food: "寿司",
+                mbti: "不明",
+                department: "リテペイ事業部 ペイメントソリ部 JFA",
+                photo: "images/JFA/"
+            },
+            {
+                name: "関口敦士",
+                club: "硬式テニス",
+                hometown: "埼玉県",
+                hobby: "スーパー銭湯巡り",
+                work: "要件定義",
+                food: "ステーキ",
+                mbti: "ENFP",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/JFA/"
+            },
+            {
+                name: "高岡裕一郎",
+                club: "ソフトテニス",
+                hometown: "神奈川県",
+                hobby: ["ウォーキング", "ランニング", "ライブ", "サカナクション", "GLAY", "髭男", "酒"],
+                work: "要件定義（会員認証）",
+                food: ["ラーメン", "サラダ", "唐揚げ", "カレー", "焼き鳥"],
+                mbti: "INFJ",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/JFA/"
+            },
+            {
+                name: "白鳥絢子",
+                club: ["ソフトテニス", "映画制作"],
+                hometown: "千葉県",
+                hobby: ["ノンフィクション映画", "マシンピラティス"],
+                work: ["UI/UX検討", "仕様統制"],
+                food: ["豚肉", "梅干し", "きのこ類"],
+                mbti: "ENFP",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/JFA/"
+            },
+            {
+                name: "小林弘樹",
+                club: ["陸上", "バレー"],
+                hometown: "宮城県",
+                hobby: ["ランニング", "バイク"],
+                work: "要件定義",
+                food: "白米",
+                mbti: "ISFP",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/JFA/"
+            },
+            {
+                name: "大図崇稔",
+                club: "硬式テニス",
+                hometown: "茨城県",
+                hobby: ["サッカー観戦", "スノーボード"],
+                work: "要件定義",
+                food: "コーヒー",
+                mbti: "ENTJ",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/JFA/"
+            },
+            {
+                name: "伊藤茉莉子",
+                club: "硬式テニス",
+                hometown: "東京都",
+                hobby: ["旅行", "野球観戦"],
+                work: ["要件定義", "開発"],
+                food: "寿司",
+                mbti: "INFJ",
+                department: "リテペイ事業部 リテペイ企画営業部 JFA",
+                photo: "images/JFA/"
+            },
+            {
+                name: "本多麻莉子",
+                club: "合唱",
+                hometown: "石川県",
+                hobby: ["読書", "オペラ鑑賞"],
+                work: "要件定義",
+                food: "オムライス",
+                mbti: "不明",
+                department: "リテペイ事業部 ペイメントソリ部 JFA",
+                photo: "images/JFA/"
+            },
+            {
+                name: "久須美創大",
+                club: ["サッカー", "バドミントン"],
+                hometown: "東京都",
+                hobby: ["読書", "麻雀", "筋トレ", "音楽", "旅行"],
+                work: "新人",
+                food: "寿司",
+                mbti: "ENFJ",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/JFA/"
+            }
+        ];
+
+        // チェックボックス用カテゴリ(JFA)
+        const categories = {
+            club: {
+                label: "部活・サークル",
+                options: ["なし", "硬式テニス", "剣道", "帰宅", "ソフトテニス", "映画制作", "陸上", "バレー", "合唱", "サッカー", "バドミントン"]
+            },
+            hometown: {
+                label: "出身地",
+                options: ["福島県", "神奈川県", "静岡県", "埼玉県", "千葉県", "宮城県", "茨城県", "東京都", "石川県"]
+            },
+            hobby: {
+                label: "趣味",
+                options: ["運動", "ゴルフ", "散歩", "酒", "競馬", "音楽鑑賞", "料理", "スーパー銭湯巡り", "ウォーキング", "ランニング", "ライブ", "サカナクション", "GLAY", "髭男", "ノンフィクション映画", "マシンピラティス", "バイク", "サッカー観戦", "スノーボード", "旅行", "野球観戦", "読書", "オペラ鑑賞", "麻雀", "筋トレ", "音楽"]
+            },
+            work: {
+                label: "業務内容",
+                options: ["管理職PM", "要件定義", "お客様PMO", "要件定義（会員認証）", "UI/UX検討", "使用統制", "開発", "新人"]
+            },
+            food: {
+                label: "好きな食べ物",
+                options: ["和食", "ラーメン", "牛丼", "焼き肉", "寿司", "ステーキ", "サラダ", "唐揚げ", "カレー", "焼き鳥", "豚肉", "梅干し", "キノコ類", "白米", "コーヒー", "オムライス"]
+            },
+            mbti: {
+                label: "MBTI",
+                options: ["INFP", "ENFP", "不明", "INFJ", "ISFP", "ENTJ", "ENFJ"]
+            }
+        };
+
+        const categoryLabels = {
+            club: "部活・サークル",
+            hometown: "出身地",
+            hobby: "趣味",
+            work: "業務内容",
+            food: "好きな食べ物",
+            mbti: "MBTI"
+        };
+
+        const filterDiv = document.getElementById("filters");
+        const selectedListDiv = document.getElementById("selectedList");
+        const selected = {};
+
+        document.querySelectorAll('.cat-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const category = this.getAttribute('data-category');
+                filterDiv.innerHTML = "";
+
+                const group = document.createElement("div");
+                group.innerHTML = `<strong>${categories[category].label}</strong><br>`;
+                categories[category].options.forEach(option => {
+                    const checked = selected[category]?.includes(option) ? "checked" : "";
+                    group.innerHTML += `
+        <label>
+          <input type="checkbox" name="${category}" value="${option}" ${checked}>
+          ${option}
+        </label>
+      `;
+                });
+                filterDiv.appendChild(group);
+
+                // チェック変更時に選択状態を更新
+                filterDiv.querySelectorAll(`input[name="${category}"]`).forEach(cb => {
+                    cb.addEventListener('change', function () {
+                        const value = this.value;
+                        if (this.checked) {
+                            if (!selected[category]) selected[category] = [];
+                            if (!selected[category].includes(value)) selected[category].push(value);
+                        } else {
+                            selected[category] = selected[category].filter(v => v !== value);
+                            if (selected[category].length === 0) delete selected[category];
+                        }
+                        updateSelectedList();
+                    });
+                });
+            });
+        });
+
+        // 選択済み一覧を表示・更新
+        function updateSelectedList() {
+            selectedListDiv.innerHTML = "";
+            Object.keys(selected).forEach(category => {
+                selected[category].forEach(value => {
+                    const item = document.createElement("span");
+                    item.className = "tag";
+                    item.style.margin = "4px";
+                    item.innerHTML = `${categoryLabels[category]}：${value} <button style="margin-left:8px;" onclick="removeSelected('${category}', '${value}')">×</button>`;
+                    selectedListDiv.appendChild(item);
+                });
+            });
+        }
+
+        // ×ボタンで選択解除
+        function removeSelected(category, value) {
+            selected[category] = selected[category].filter(v => v !== value);
+            if (selected[category].length === 0) delete selected[category];
+            updateSelectedList();
+
+            // チェックボックスが表示されている場合は連動して外す
+            const cb = document.querySelector(`input[name="${category}"][value="${value}"]`);
+            if (cb) cb.checked = false;
+        }
+
+        // 検索（OR条件）
+        function search() {
+            let results = data.filter(person => {
+                return Object.keys(selected).some(category => {
+                    const value = person[category];
+                    if (Array.isArray(value)) {
+                        return value.some(val => selected[category].includes(val));
+                    } else {
+                        return selected[category].includes(value);
+                    }
+                });
+            });
+
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "";
+            if (results.length === 0) {
+                resultsDiv.innerHTML = "<p>該当なし</p>";
+            } else {
+                let html = '<div class="card-container">';
+                results.forEach(p => {
+                    // 該当項目の抽出
+                    let matchedConditions = Object.keys(selected).map(category => {
+                        const label = categoryLabels[category] || category;
+                        const personValue = p[category];
+                        if (Array.isArray(personValue)) {
+                            const matched = personValue.filter(val => selected[category].includes(val));
+                            return matched.map(val => `<span class="tag">${label}：${val}</span>`).join(" ");
+                        } else {
+                            return selected[category].includes(personValue)
+                                ? `<span class="tag">${label}：${personValue}</span>`
+                                : "";
+                        }
+                    }).filter(Boolean).join(" ");
+
+                    html += `
+        <div class="card">
+          <div class="card-info">
+            <h3>${p.name}</h3>
+            <p class="department">${p.department}</p>
+          </div>
+          <img src="${p.photo || 'images/noimage.png'}" alt="${p.name}">
+          ${matchedConditions ? `<div class="matched">${matchedConditions}</div>` : ""}
+        </div>
+      `;
+                });
+                html += "</div>";
+                resultsDiv.innerHTML = html;
+            }
+        }
+        // リセット
+        function resetFilters() {
+            for (const key in selected) {
+                delete selected[key];
+            }
+            filterDiv.innerHTML = "";
+            selectedListDiv.innerHTML = "";
+            document.getElementById("results").innerHTML = "";
+        }
+    </script>
+</body>
+
+
+</html>
