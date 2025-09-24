@@ -118,490 +118,500 @@
     // サンプルデータ
     const data = [
         {
-            name: "菅野陽花",
-            club: "なし",
-            hometown: "福島県",
-            hobby: ["運動", "ゴルフ"],
-            //　↑　体を動かすこと
-            work: "管理職PM",
-            food: "和食",
-            mbti: "INFP",
-            department: "リテペイ事業部 リテールソリ部 JFA",
-            photo: "images/kannnoharuka.png"
-        },
+                name: "菅野陽花",
+                club: "なし",
+                hometown: "福島県",
+                hobby: ["運動", "ゴルフ"],
+                //　↑　体を動かすこと
+                work: "管理職PM",
+                food: "和食",
+                mbti: "INFP",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/kannnoharuka.png"
+            },
+            {
+                name: "深石友和",
+                club: "硬式テニス",
+                hometown: "神奈川県",
+                hobby: "散歩",
+                work: "要件定義",
+                food: ["ラーメン", "牛丼"],
+                mbti: "INFP",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/mu.jpg"
+            },
+            {
+                name: "五十嵐穂高",
+                club: ["剣道", "硬式テニス"],
+                hometown: "静岡県",
+                hobby: ["お酒", "競馬"],
+                work: "お客様PMO",
+                food: ["焼肉", "寿司", "ラーメン"],
+                mbti: "ENFP",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/mu.jpg"
+            },
+            {
+                name: "塩沢祐一郎",
+                club: "帰宅",
+                hometown: "埼玉県",
+                hobby: ["音楽鑑賞", "料理"],
+                work: "要件定義",
+                food: "寿司",
+                mbti: "不明",
+                department: "リテペイ事業部 ペイメントソリ部 JFA",
+                photo: "images/siozawayuitiro.png"
+            },
+            {
+                name: "関口敦士",
+                club: "硬式テニス",
+                hometown: "埼玉県",
+                hobby: "スーパー銭湯巡り",
+                work: "要件定義",
+                food: "ステーキ",
+                mbti: "ENFP",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/mu.jpg"
+            },
+            {
+                name: "高岡裕一郎",
+                club: "ソフトテニス",
+                hometown: "神奈川県",
+                hobby: ["ウォーキング", "ランニング", "ライブ", "サカナクション", "GLAY", "髭男", "お酒"],
+                work: "要件定義（会員認証）",
+                food: ["ラーメン", "サラダ", "唐揚げ", "カレー", "焼き鳥"],
+                mbti: "INFJ",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/takaokayuichiro.png"
+            },
+            {
+                name: "白鳥絢子",
+                club: ["ソフトテニス", "映画制作"],
+                hometown: "千葉県",
+                hobby: ["ノンフィクション映画", "マシンピラティス"],
+                work: ["UI/UX検討", "仕様統制"],
+                food: ["豚肉", "梅干し", "きのこ類"],
+                mbti: "ENFP",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/shiratoriayako.png"
+            },
+            {
+                name: "本多麻莉子",
+                club: "合唱",
+                hometown: "石川県",
+                hobby: ["読書", "オペラ鑑賞"],
+                work: "要件定義",
+                food: "オムライス",
+                mbti: "不明",
+                department: "リテペイ事業部 ペイメントソリ部 JFA",
+                photo: "images/hondamariko.jpg"
+            },
+            {
+                name: "小林弘樹",
+                club: ["陸上", "バレー"],
+                hometown: "宮城県",
+                hobby: ["ランニング", "バイク"],
+                work: "要件定義",
+                food: "白米",
+                mbti: "ISFP",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/kobayashihiroki.png"
+            },
+            {
+                name: "大図崇稔",
+                club: "硬式テニス",
+                hometown: "茨城県",
+                hobby: ["サッカー観戦", "スノボ"],
+                work: "要件定義",
+                food: "コーヒー",
+                mbti: "ENTJ",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/ozutakane.png"
+            },
+            {
+                name: "伊藤茉莉子",
+                club: "硬式テニス",
+                hometown: "東京都",
+                hobby: ["旅行", "野球観戦"],
+                work: ["要件定義", "開発"],
+                food: "寿司",
+                mbti: "INFJ",
+                department: "リテペイ事業部 リテペイ企画営業部 JFA",
+                photo: "images/itomariko.JPG"
+            },
+            {
+                name: "久須美創大",
+                club: ["サッカー", "バドミントン"],
+                hometown: "東京都",
+                hobby: ["読書", "麻雀", "筋トレ", "カラオケ","サカナクション","邦楽聞くこと","クラシックギター", "旅行"],
+                food: "寿司",
+                mbti: "ENFJ",
+                department: "リテペイ事業部 リテールソリ部 JFA",
+                photo: "images/kusumisouta.png"
+            },
         {
-            name: "深石友和",
-            club: "硬式テニス",
-            hometown: "神奈川県",
-            hobby: "散歩",
-            work: "要件定義",
-            food: ["ラーメン", "牛丼"],
-            mbti: "INFP",
-            department: "リテペイ事業部 リテールソリ部 JFA",
-            photo: "images/mu.jpg"
-        },
+        name: "多賀康晴",
+        club: "硬式テニス",
+        hometown: "岡山県",
+        work: "PM",
+        food: ["寿司", "ラーメン"],
+        mbti: "INTP",
+        department: "リテペイ事業部 ペイメントソリ部 SBJ",
+        photo: "images/tagayasuharu.jpg"
+      },
+      {
+        name: "小坂正行",
+        club: ["水泳", "バンド"],
+        hometown: "埼玉県",
+        hobby: ["ゲーム", "ランニング", "料理", "万博"],
+        work: "運用保守",
+        food: ["チョコ", "ピザ", "餃子", "唐揚げ"],
+        mbti: "INTP",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/kosakamasayuki.jpg"
+      },
+      {
+        name: "原琢矢",
+        club: "軽音",
+        hometown: "埼玉県",
+        hobby: ["ゲーム", "バイク", "楽器", "お酒"],
+        work: "開発",
+        food: "焼きそば",
+        mbti: "INTP",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/haratakuya.png"
+      },
+      {
+        name: "小宮山裕也",
+        club: "ソフトテニス",
+        hometown: "長野県",
+        hobby: ["ゲーム", "釣り"],
+        work: "開発",
+        food: "寿司",
+        mbti: "ISFJ",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/komiyamayuuya.jpg"
+      },
+      {
+        name: "釜田桃里",
+        club: ["バンド", "バスケ"],
+        hometown: "神奈川県",
+        hobby: ["旅行", "ショッピング", "漫画", "アニメ"],
+        work: "お客様先PJ支援",
+        food: "カニ",
+        mbti: "ISFJ",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/kamatamomori.JPG"
+      },
+      {
+        name: "北澤優衣",
+        club: "吹奏楽",
+        hometown: "埼玉県",
+        work: "開発",
+        food: ["チョコ", "グミ"],
+        mbti: "INFJ",
+        department: "リテペイ事業部 リテールソリ部SBJ",
+        photo: "images/kitazawayui.jpg"
+      },
+      {
+        name: "小西ゆめか",
+        club: ["軽音", "漫研", "バレー"],
+        hometown: "東京都",
+        hobby: ["ゲーム", "お絵描き", "カラオケ"],
+        work: ["システムテスト", "開発"],
+        food: "ラーメン",
+        mbti: "ENTJ",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/konishiyumeka.jpg"
+      },
+      {
+        name: "中村崇太",
+        club: "ラグビー",
+        hometown: "秋田県",
+        hobby: ["ゲーム", "筋トレ", "コーヒードリップ"],
+        work: "運用保守",
+        food: "寿司",
+        mbti: "ISFP",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/nakamurasouta.jfif"
+      },
+      {
+        name: "篠田歩佳",
+        club: "吹奏楽",
+        hometown: "埼玉県",
+        hobby: ["旅行", "ネイル", "ショッピング", "スノボ", "カメラ", "カフェ巡り"],
+        work: "システムテスト",
+        food: ["寿司", "しゃぶしゃぶ", "甘いもの"],
+        mbti: "ESFJ",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/shinodahonoka.jpg"
+      },
+      {
+        name: "福井愛優",
+        club: ["ソフトテニス", "ダンス"],
+        hometown: "東京都",
+        hobby: ["ネイル", "料理"],
+        food: ["寿司", "ラーメン", "白米", "餃子"],
+        mbti: "INFP",
+        department: "リテペイ事業部 リテールソリ部 SBJ",
+        photo: "images/fukuiayu.jpg"
+      },
         {
-            name: "五十嵐穂高",
-            club: ["剣道", "硬式テニス"],
-            hometown: "静岡県",
-            hobby: ["酒", "競馬"],
-            work: "お客様PMO",
-            food: ["焼肉", "寿司", "ラーメン"],
-            mbti: "ENFP",
-            department: "リテペイ事業部 リテールソリ部 JFA",
-            photo: "images/mu.jpg"
-        },
-        {
-            name: "塩沢祐一郎",
-            club: "帰宅",
-            hometown: "埼玉県",
-            hobby: ["音楽鑑賞", "料理"],
-            work: "要件定義",
-            food: "寿司",
-            mbti: "不明",
-            department: "リテペイ事業部 ペイメントソリ部 JFA",
-            photo: "images/siozawayuitiro.png"
-        },
-        {
-            name: "関口敦士",
-            club: "硬式テニス",
-            hometown: "埼玉県",
-            hobby: "スーパー銭湯巡り",
-            work: "要件定義",
-            food: "ステーキ",
-            mbti: "ENFP",
-            department: "リテペイ事業部 リテールソリ部 JFA",
-            photo: "images/mu.jpg"
-        },
-        {
-            name: "高岡裕一郎",
-            club: "ソフトテニス",
-            hometown: "神奈川県",
-            hobby: ["ウォーキング", "ランニング", "ライブ", "サカナクション", "GLAY", "髭男", "酒"],
-            work: "要件定義（会員認証）",
-            food: ["ラーメン", "サラダ", "唐揚げ", "カレー", "焼き鳥"],
-            mbti: "INFJ",
-            department: "リテペイ事業部 リテールソリ部 JFA",
-            photo: "images/takaokayuichiro.png"
-        },
-        {
-            name: "白鳥絢子",
-            club: ["ソフトテニス", "映画制作"],
-            hometown: "千葉県",
-            hobby: ["ノンフィクション映画", "マシンピラティス"],
-            work: ["UI/UX検討", "仕様統制"],
-            food: ["豚肉", "梅干し", "きのこ類"],
-            mbti: "ENFP",
-            department: "リテペイ事業部 リテールソリ部 JFA",
-            photo: "images/shiratoriayako.png"
-        },
-        {
-            name: "小林弘樹",
-            club: ["陸上", "バレー"],
-            hometown: "宮城県",
-            hobby: ["ランニング", "バイク"],
-            work: "要件定義",
-            food: "白米",
-            mbti: "ISFP",
-            department: "リテペイ事業部 リテールソリ部 JFA",
-            photo: "images/kobayashihiroki.png"
-        },
-        {
-            name: "大図崇稔",
-            club: "硬式テニス",
-            hometown: "茨城県",
-            hobby: ["サッカー観戦", "スノーボード"],
-            work: "要件定義",
-            food: "コーヒー",
-            mbti: "ENTJ",
-            department: "リテペイ事業部 リテールソリ部 JFA",
-            photo: "images/ozutakane.png"
-        },
-        {
-            name: "伊藤茉莉子",
-            club: "硬式テニス",
-            hometown: "東京都",
-            hobby: ["旅行", "野球観戦"],
-            work: ["要件定義", "開発"],
-            food: "寿司",
-            mbti: "INFJ",
-            department: "リテペイ事業部 リテペイ企画営業部 JFA",
-            photo: "images/itomariko.JPG"
-        },
-        {
-            name: "本多麻莉子",
-            club: "合唱",
-            hometown: "石川県",
-            hobby: ["読書", "オペラ鑑賞"],
-            work: "要件定義",
-            food: "オムライス",
-            mbti: "不明",
-            department: "リテペイ事業部 ペイメントソリ部 JFA",
-            photo: "images/hondamariko.jpg"
-        },
-        {
-            name: "久須美創大",
-            club: ["サッカー", "バドミントン"],
-            hometown: "東京都",
-            hobby: ["読書", "麻雀", "筋トレ", "音楽", "旅行"],
-            work: "新人",
-            food: "寿司",
-            mbti: "ENFJ",
-            department: "リテペイ事業部 リテールソリ部 JFA",
-            photo: "images/kusumisouta.png"
-        },
-        {
-            name: "多賀康晴",
-            club: "テニス",
-            hometown: "岡山県",
-            work: "PM",
-            food: ["寿司", "ラーメン"],
-            mbti: "INTP",
-            department: "リテペイ事業部 ペイメントソリ部 SBJ",
-            photo: "images/tagayasuharu.jpg"
-        },
-        {
-            name: "小坂正行",
-            club: ["水泳", "バンド"],
-            hometown: "埼玉県",
-            hobby: ["ゲーム", "ランニング", "料理", "万博"],
-            work: "運用保守",
-            food: ["チョコ", "ピザ", "餃子", "唐揚げ"],
-            mbti: "INTP",
-            department: "リテペイ事業部 リテールソリ部 SBJ",
-            photo: "images/kosakamasayuki.jpg"
-        },
-        {
-            name: "原琢矢",
-            club: "軽音",
-            hometown: "埼玉県",
-            hobby: ["ゲーム", "バイク", "楽器", "酒"],
-            work: "開発",
-            food: ["焼きそば"],
-            mbti: "INTP",
-            department: "リテペイ事業部 リテールソリ部 SBJ",
-            photo: "images/haratakuya.png"
-        },
-        {
-            name: "小宮山裕也",
-            club: "テニス",
-            hometown: "長野県",
-            hobby: ["ゲーム", "釣り"],
-            work: ["開発"],
-            food: ["寿司"],
-            mbti: "ISFJ",
-            department: "リテペイ事業部 リテールソリ部 SBJ",
-            photo: "images/komiyamayuuya.jpg"
-        },
-        {
-            name: "釜田桃里",
-            club: ["バンド", "バスケ"],
-            hometown: "神奈川県",
-            hobby: ["旅行", "ショッピング", "漫画", "アニメ"],
-            work: "お客様先PJ支援",
-            food: "カニ",
-            mbti: "ISFP",
-            department: "リテペイ事業部 リテールソリ部 SBJ",
-            photo: "images/kamatamomori.JPG"
-        },
-        {
-            name: "北澤優衣",
-            club: "吹奏楽",
-            hometown: "埼玉県",
-            work: "開発",
-            food: ["チョコ", "グミ"],
-            mbti: "INFJ",
-            department: "リテペイ事業部 リテールソリ部SBJ",
-            photo: "images/kitazawayui.jpg"
-        },
-        {
-            name: "小西ゆめか",
-            club: ["軽音", "漫研", "バレー"],
-            hometown: "東京都",
-            hobby: ["ゲーム", "お絵描き", "カラオケ"],
-            work: ["システムテスト", "開発"],
-            food: ["ラーメン"],
-            mbti: "ENTJ",
-            department: "リテペイ事業部 リテールソリ部 SBJ",
-            photo: "images/konishiyumeka.jpg"
-        },
-        {
-            name: "中村崇太",
-            club: "ラグビー",
-            hometown: "秋田県",
-            hobby: ["ゲーム", "筋トレ", "コーヒードリップ"],
-            work: "運用保守",
-            food: "寿司",
-            mbti: "ISFP",
-            department: "リテペイ事業部 リテールソリ部 SBJ",
-            photo: "images/nakamurasouta.jfif"
-        },
-        {
-            name: "篠田歩佳",
-            club: "吹奏楽",
-            hometown: "埼玉県",
-            hobby: ["旅行", "ネイル", "ショッピング", "スノボ", "カメラ", "カフェ巡り"],
-            work: "システムテスト",
-            food: ["寿司", "しゃぶしゃぶ", "甘い物"],
-            mbti: "ESFJ",
-            department: "リテペイ事業部 リテールソリ部 SBJ",
-            photo: "images/shinodahonoka.jpg"
-        },
-        {
-            name: "福井愛優",
-            club: ["ソフトテニス", "ダンス"],
-            hometown: "東京都",
-            hobby: ["ネイル", "酒", "料理"],
-            work: "新人",
-            food: ["寿司", "ラーメン", "白米", "餃子"],
-            mbti: "INFP",
-            department: "リテペイ事業部 リテールソリ部 SBJ",
-            photo: "images/fukuiayu.jpg"
-        },
-        {
-            name: "高橋慶多",
-            club: "バスケ",
-            hometown: "新潟県",
-            hobby: ["バスケ", "サウナ", "飲み", "筋トレ"],
-            work: ["社内LAN担当業務", "資料インプット", "暇"],
-            food: ["ラーメン", "納豆", "ブロッコリー"],
-            mbti: "ENFP",
-            department: "リテペイ事業部 リテールソリ部 MCCM",
-            photo: "images/takahasikeita.jpg"
-        },
-        {
-            name: "渡邊忠義",
-            club: ["硬式テニス", "スキー"],
-            hometown: "東京都",
-            hobby: ["ショッピング", "お出かけ", "映画", "ゴルフ"],
-            work: ["運用保守", "新規案件"],
-            food: ["肉", "刺身"],
-            mbti: "ESFP",
-            department: "リテペイ事業部 リテールソリ部 MCCM",
-            photo: "images/watanabe.png"
-        },
-        {
-            name: "塩澤優希",
-            club: ["テニス", "バスケ", "野球", "バレー"],
-            hometown: "東京都",
-            hobby: "ゲーム",
-            work: "要件定義",
-            food: "寿司",
-            mbti: "ISFP",
-            department: "リテペイ事業部 リテールソリ部 MCCM",
-            photo: "images/siozawa.png"
-        },
-        {
-            name: "佐々木大貴",
-            club: "帰宅",
-            hometown: "神奈川県",
-            hobby: "映画",
-            work: "仕様変更設計",
-            mbti: "不明",
-            department: "リテペイ事業部 リテールソリ部 MCCM",
-            photo: "images/sasaki.png"
-        },
-        {
-            name: "穂谷野真央",
-            club: ["バスケ", "バドミントン", "バンド"],
-            hometown: "千葉県",
-            hobby: ["キャンプ", "おいしいもの食べる", "登山"],
-            work: "仕様変更設計",
-            food: ["魚", "牡蠣", "納豆"],
-            mbti: "ISFP",
-            department: "リテペイ事業部 リテールソリ部 MCCM",
-            photo: "images/hoyanomao.jpg"
-        },
-        {
-            name: "島谷有紀",
-            club: "ソフトテニス",
-            hometown: "神奈川県",
-            hobby: ["自然", "カメラ", "カフェ", "ごはん屋さん巡り"],
-            work: ["運用保守", "開発"],
-            food: ["麻婆豆腐", "トマト"],
-            mbti: "INFP",
-            department: "リテペイ事業部 リテールソリ部 MCCM",
-            photo: "images/simayayuki.jpg"
-        },
-        {
-            name: "近藤靖文",
-            club: "バレー",
-            hometown: "徳島県",
-            hobby: "ボードゲーム",
-            work: "SRE",
-            food: "梨",
-            mbti: "INTP",
-            department: "リテペイ事業部 リテールソリ部 MCCM",
-            photo: "images/kondou.jpg"
-        },
-        {
-            name: "小川博史",
-            club: "バスケ",
-            hometown: "静岡県",
-            hobby: ["バスケ", "ギャンブル"],
-            work: ["開発", "運用保守"],
-            food: "卵",
-            mbti: "不明",
-            department: "リテペイ事業部 リテールソリ部 MCCM",
-            photo: "images/ogawa.png"
-        },
-        {
-            name: "山本孝範",
-            club: ["野球", "社交ダンス"],
-            hometown: "埼玉県",
-            hobby: "ランニング",
-            work: "開発",
-            food: "カレー",
-            mbti: "不明",
-            department: "リテペイ事業部 リテールソリ部 MCCM",
-            photo: "images/yamamoto.jpg"
-        },
-        {
-            name: "谷津ほの香",
-            club: "フットサル",
-            hometown: "東京都",
-            hobby: ["ゴルフ", "サッカー"],
-            work: ["仕様変更の設計", "開発"],
-            food: "寿司",
-            mbti: "ENFP",
-            department: "リテペイ事業部 リテールソリ部 MCCM",
-            photo: "images/yatuhonoka.jpg"
-        },
-        {
-            name: "中村知樹",
-            club: "陸上",
-            hometown: "埼玉県",
-            hobby: ["おいしいもの食べる", "サッカー"],
-            work: "新人",
-            food: ["寿司", "梨"],
-            mbti: "ESFJ",
-            department: "リテペイ事業部 リテールソリ部 MCCM",
-            photo: "images/nakamuratomoki.jpg"
-        },
+                name: "高橋慶多",
+                club: "バスケ",
+                hometown: "新潟県",
+                hobby: ["バスケ", "サウナ", "飲み", "筋トレ"],
+                work: ["社内LAN担当業務", "資料インプット", "暇"],
+                food: ["ラーメン", "納豆", "ブロッコリー"],
+                mbti: "ENFP",
+                department: "リテペイ事業部 リテールソリ部 MCCM",
+                photo: "images/takahasikeita.jpg"
+            },
+            {
+                name: "渡邊忠義",
+                club: ["硬式テニス", "スキー"],
+                hometown: "東京都",
+                hobby: ["ショッピング", "お出かけ", "映画", "ゴルフ"],
+                work: ["運用保守", "新規案件"],
+                food: ["肉", "刺身"],
+                mbti: "ESFP",
+                department: "リテペイ事業部 リテールソリ部 MCCM",
+                photo: "images/watanabe.png"
+            },
+            {
+                name: "塩澤優希",
+                club: ["硬式テニス", "バスケ", "野球", "バレー"],
+                hometown: "東京都",
+                hobby: "ゲーム",
+                work: "要件定義",
+                food: "寿司",
+                mbti: "ISFP",
+                department: "リテペイ事業部 リテールソリ部 MCCM",
+                photo: "images/siozawa.png"
+            },
+            {
+                name: "佐々木大貴",
+                club: "帰宅",
+                hometown: "神奈川県",
+                hobby: "映画",
+                work: "仕様変更設計",
+                food: "なし",
+                mbti: "不明",
+                department: "リテペイ事業部 リテールソリ部 MCCM",
+                photo: "images/mu.jpg"
+            },
+            {
+                name: "穂谷野真央",
+                club: ["バスケ", "バドミントン", "バンド"],
+                hometown: "千葉県",
+                hobby: ["キャンプ", "おいしいもの食べる", "登山"],
+                work: "仕様変更設計",
+                food: ["魚", "牡蠣", "納豆"],
+                mbti: "ISFP",
+                department: "リテペイ事業部 リテールソリ部 MCCM",
+                photo: "images/hoyanomao.jpg"
+            },
+            {
+                name: "島谷有紀",
+                club: "ソフトテニス",
+                hometown: "神奈川県",
+                hobby: ["自然", "カメラ", "カフェ", "ごはん屋さん巡り"],
+                work: ["運用保守", "開発"],
+                food: ["麻婆豆腐", "トマト"],
+                mbti: "INFP",
+                department: "リテペイ事業部 リテールソリ部 MCCM",
+                photo: "images/simayayuki.jpg"
+            },
+            {
+                name: "近藤靖文",
+                club: "バレー",
+                hometown: "徳島県",
+                hobby: "ボードゲーム",
+                work: "SRE",
+                food: "梨",
+                mbti: "INTP",
+                department: "リテペイ事業部 リテールソリ部 MCCM",
+                photo: "images/kondou.jpg"
+            },
+            {
+                name: "小川博史",
+                club: "バスケ",
+                hometown: "静岡県",
+                hobby: ["バスケ", "ギャンブル"],
+                work: ["開発", "運用保守"],
+                food: "卵",
+                mbti: "不明",
+                department: "リテペイ事業部 リテールソリ部 MCCM",
+                photo: "images/ogawa.png"
+            },
+            {
+                name: "山本孝範",
+                club: ["野球", "社交ダンス"],
+                hometown: "埼玉県",
+                hobby: "ランニング",
+                work: "開発",
+                food: "カレー",
+                mbti: "不明",
+                department: "リテペイ事業部 リテールソリ部 MCCM",
+                photo: "images/mu.jpg"
+            },
+            {
+                name: "谷津ほの香",
+                club: "フットサル",
+                hometown: "東京都",
+                hobby: ["ゴルフ", "サッカー"],
+                work: ["仕様変更の設計", "開発"],
+                food: "寿司",
+                mbti: "ENFP",
+                department: "リテペイ事業部 リテールソリ部 MCCM",
+                photo: "images/yatuhonoka.jpg"
+            },
+            {
+                name: "中村知樹",
+                club: "陸上",
+                hometown: "埼玉県",
+                hobby: ["おいしいもの食べる", "サッカー"],
+                food: ["寿司", "梨"],
+                mbti: "ESFJ",
+                department: "リテペイ事業部 リテールソリ部 MCCM",
+                photo: "images/nakamuratomoki.jpg"
+            },
 
         {
-            name: "中原敬之",
-            club: "バスケ",
-            hometown: "東京都",
-            hobby: ["スノボ", "サーフィン"],
-            work: "新規営業",
-            food: "寿司",
-            mbti: "ENFP",
-            department: "リテペイ事業部 リテペイ企画営業部 新規営業",
-            photo: "images/nakaharatakashi.png"
-        },
-
-        {
-            name: "柳田康汰",
-            club: "学生祭実行委員",
-            hometown: "大阪府",
-            hobby: "映画",
-            work: ["新規営業", "新規事業立ち上げ"],
-            food: "ラーメン",
-            mbti: "ENFP",
-            department: "リテペイ事業部 リテペイ企画営業部 新規営業",
-            photo: "images/yanagidakouta.jpg"
-        },
-
-        {
-            name: "黒籔華代",
-            club: "バスケ",
-            hometown: "岡山県",
-            hobby: "旅行",
-            work: "新規営業",
-            food: "お酒に合うおつまみ",
-            mbti: "ESFP",
-            department: "リテペイ事業部 リテペイ企画営業部 新規営業",
-            photo: "images/kuroyabukayo.png"
-        },
-
-        {
-            name: "白石太郎",
-            club: ["サッカー", "硬式テニス"],
-            hometown: "新潟県",
-            hobby: ["ドライブ", "部屋づくり", "ゴルフ"],
-            work: "新規営業",
-            food: ["焼肉", "寿司", "ラーメン"],
-            mbti: "ENFJ",
-            department: "リテペイ事業部 リテペイ企画営業部 新規営業",
-            photo: "images/shiraishitaro.jpg"
-        },
-
-        {
-            name: "宮原啓一郎",
-            club: ["サッカー", "ラクロス"],
-            hometown: "岩手県",
-            hobby: "サッカー観戦",
-            work: "新規営業",
-            food: "辛いもの",
-            mbti: "INFP",
-            department: "リテペイ事業部 リテペイ企画営業部 新規営業",
-            photo: "images/miyaharakeiitiro.jpg"
-        },
-
-        {
-            name: "岡部椋太",
-            club: "ソフトテニス",
-            hometown: "東京都",
-            hobby: "サウナ",
-            work: "新規営業",
-            food: "ココスのビーフハンバーグステーキ",
-            mbti: "ESFP",
-            department: "リテペイ事業部 リテペイ企画営業部 新規営業",
-            photo: "images/okaberyota.jpg"
-        },
-
-        {
-            name: "太田陽介",
-            club: "バスケ",
-            hometown: "大阪府",
-            hobby: "サッカー観戦",
-            work: "新規営業",
-            food: "すき焼き",
-            mbti: "ESFP",
-            department: "リテペイ事業部 リテペイ企画営業部 新規営業",
-            photo: "images/otayosuke.png"
-        }
+                name: "中原敬之",
+                club: "バスケ",
+                hometown: "東京都",
+                hobby: ["スノボ", "サーフィン"],
+                work: "新規営業",
+                food: "寿司",
+                mbti: "ENFP",
+                department: "リテペイ事業部 リテペイ企画営業部 新規営業",
+                photo: "images/nakaharatakashi.png"
+            },
+ 
+            {
+                name: "柳田康汰",
+                club: "学生祭実行委員",
+                hometown: "大阪府",
+                hobby: "映画",
+                work: ["新規営業", "新規事業立ち上げ"],
+                food: "ラーメン",
+                mbti: "ENFP",
+                department: "リテペイ事業部 リテペイ企画営業部 新規営業",
+                photo: "images/yanagidakouta.jpg"
+            },
+ 
+            {
+                name: "黒籔華代",
+                club: "バスケ",
+                hometown: "岡山県",
+                hobby: "旅行",
+                work: "新規営業",
+                food: "お酒に合うおつまみ",
+                mbti: "ESFP",
+                department: "リテペイ事業部 リテペイ企画営業部 新規営業",
+                photo: "images/kuroyabukayo.png"
+            },
+ 
+            {
+                name: "白石太郎",
+                club: ["サッカー", "硬式テニス"],
+                hometown: "新潟県",
+                hobby: ["ドライブ", "部屋づくり", "ゴルフ"],
+                work: "新規営業",
+                food: ["焼肉", "寿司", "ラーメン"],
+                mbti: "ENFJ",
+                department: "リテペイ事業部 リテペイ企画営業部 新規営業",
+                photo: "images/shiraishitaro.jpg"
+            },
+ 
+            {
+                name: "宮原啓一郎",
+                club: ["サッカー", "ラクロス"],
+                hometown: "岩手県",
+                hobby: "サッカー観戦",
+                work: "新規営業",
+                food: "辛いもの",
+                mbti: "INFP",
+                department: "リテペイ事業部 リテペイ企画営業部 新規営業",
+                photo: "images/miyaharakeiitiro.jpg"
+            },
+ 
+            {
+                name: "岡部椋太",
+                club: "ソフトテニス",
+                hometown: "東京都",
+                hobby: "サウナ",
+                work: "新規営業",
+                food: "ココスのビーフハンバーグステーキ",
+                mbti: "ESFP",
+                department: "リテペイ事業部 リテペイ企画営業部 新規営業",
+                photo: "images/okaberyota.jpg"
+            },
+ 
+            {
+                name: "太田陽介",
+                club: "バスケ",
+                hometown: "大阪府",
+                hobby: "サッカー観戦",
+                work: ["新規営業","新人"],
+                food: "すき焼き",
+                mbti: "ESFP",
+                department: "リテペイ事業部 リテペイ企画営業部 新規営業",
+                photo: "images/otayosuke.png"
+            }
     ];
 
     // チェックボックス用カテゴリ(conect)
     const categories = {
         club: {
             label: "部活・サークル",
-            options: ["なし", "サッカー", "スキー", "ソフトテニス", "ダンス", "テニス", "バスケ", "バドミントン", "バレー", "バンド",
-                "フットサル", "ラクロス", "ラグビー", "剣道", "合唱", "吹奏楽", "学生祭実行委員", "帰宅", "映画制作",
-                "水泳", "漫研", "硬式テニス", "社交ダンス", "軽音", "野球", "陸上"]
+            options: ["野球", "バスケ", "サッカー", "フットサル", "バレー", "硬式テニス", "ソフトテニス",  
+            "バドミントン", "ラグビー", "ラクロス",
+            "スキー", "陸上", "剣道", "水泳", 
+            "軽音", "バンド", "吹奏楽", "ダンス", "社交ダンス", "合唱", "漫研", "映画制作","学生祭実行委員", 
+            "帰宅", "なし"]
         },
         hometown: {
             label: "出身地",
-            options: ["千葉県", "埼玉県", "大阪府", "宮城県", "岡山県", "岩手県", "徳島県", "新潟県", "東京都", "石川県",
-                "神奈川県", "福島県", "秋田県", "茨城県", "長野県", "静岡県"]
+            options: ["秋田県", "岩手県", "宮城県", "福島県", 
+            "茨城県", "東京都", "千葉県", "埼玉県", "神奈川県", 
+            "新潟県", "石川県", "長野県", "静岡県",
+            "大阪府", "岡山県", "徳島県"]
         },
         hobby: {
             label: "趣味",
-            options: ["GLAY", "おいしいもの食べる", "お出かけ", "お絵描き", "ごはん屋さん巡り", "アニメ", "ウォーキング", "オペラ鑑賞",
-                "カフェ", "カフェ巡り", "カメラ", "カラオケ", "キャンプ", "ギャンブル", "ゲーム", "コーヒードリップ", "ゴルフ",
-                "サウナ", "サカナクション", "サッカー", "サッカー観戦", "サーフィン", "ショッピング", "スノボ", "スノーボード",
-                "スーパー銭湯巡り", "ドライブ", "ネイル", "ノンフィクション映画", "バイク", "バスケ", "ボードゲーム",
-                "マシンピラティス", "ライブ", "ランニング", "万博", "散歩", "料理", "旅行", "映画", "楽器", "漫画", "登山",
-                "競馬", "筋トレ", "自然", "読書", "運動", "部屋づくり", "酒", "野球観戦", "釣り", "音楽", "音楽鑑賞", "飲み", "髭男", "麻雀"]
+            options: ["おいしいもの食べる", "ごはん屋さん巡り", "カフェ", "カフェ巡り", "コーヒードリップ", "料理", "お酒", "飲み", 
+            "カラオケ", "ライブ", "GLAY", "髭男", "サカナクション", "邦楽聞くこと", "音楽鑑賞", "オペラ鑑賞", "楽器", "クラシックギター", 
+            "お出かけ","ショッピング", "ネイル", "スーパー銭湯巡り", "サウナ", "万博", 
+            "旅行", "ドライブ", "バイク", "キャンプ", "釣り", "登山", "自然", "カメラ",
+            "映画", "ノンフィクション映画", "漫画", "アニメ", "読書","お絵描き", "部屋づくり",   
+            "ゲーム", "ギャンブル", "競馬", "麻雀", "ボードゲーム",
+            "運動", "バスケ", "サッカー", "サッカー観戦", "野球観戦", "サーフィン", "スノボ", "ゴルフ", 
+            "筋トレ", "マシンピラティス", "散歩", "ウォーキング", "ランニング"]
         },
         work: {
             label: "業務内容",
-            options: ["PM", "SRE", "UI/UX検討", "お客様PMO", "お客様先PJ支援", "システムテスト", "仕様変更設計", "使用統制",
-                "新人", "新規事業立ち上げ", "新規営業", "新規案件", "暇", "社内LAN担当業務", "管理職PM", "要件定義",
-                "要件定義（会員認証）", "資料インプット", "運用保守", "開発"]
+            options: [
+            "お客様PMO", "お客様先PJ支援", "管理職PM", "PM", 
+            "新規事業立ち上げ", "新規営業", "新規案件", "要件定義", "要件定義（会員認証）", "UI/UX検討", "使用統制",
+            "仕様変更設計", "開発", "システムテスト", "運用保守", "SRE", "社内LAN担当業務", "資料インプット",  "暇","新人"
+            ]
         },
         food: {
             label: "好きな食べ物",
-            options: ["お酒に合うおつまみ", "しゃぶしゃぶ", "すき焼き", "なし", "オムライス", "カニ", "カレー", "キノコ類", "グミ",
-                "ココスのビーフハンバーグステーキ", "コーヒー", "サラダ", "ステーキ", "チョコ", "トマト", "ピザ", "ブロッコリー",
-                "ラーメン", "刺身", "卵", "和食", "唐揚げ", "寿司", "梅干し", "梨", "焼きそば", "焼き肉", "焼き鳥", "焼肉",
-                "牛丼", "牡蠣", "白米", "納豆", "肉", "豚肉", "辛いもの", "餃子", "魚", "麻婆豆腐"]
+            options: ["和食", "白米", "納豆", "梅干し",
+            "魚", "寿司", "刺身", "牡蠣","カニ",  
+            "サラダ", "ブロッコリー", "トマト", "きのこ類", 
+            "肉", "豚肉", "焼肉", "唐揚げ", "焼き鳥", "牛丼", "ココスのビーフハンバーグステーキ", "ステーキ", "しゃぶしゃぶ", "すき焼き", 
+            "卵", "オムライス", "カレー", "ピザ", "焼きそば",
+            "辛いもの", "餃子", "麻婆豆腐","ラーメン", 
+            "甘いもの", "梨", "グミ","コーヒー", "チョコ", 
+            "お酒に合うおつまみ", "なし"]
         },
         mbti: {
             label: "MBTI",
-            options: ["ENFJ", "ENFP", "ENTJ", "ESFJ", "ESFP", "INFJ", "INFP", "INTP", "ISFJ", "ISFP", "不明"]
+            options: ["ENFP", "ENFJ", "INFP", "INFJ", "ESFP", "ISFP", "ESFJ", "ISFJ", "ENTJ", "INTP", "不明"]
         }
     };
 
