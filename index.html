@@ -3,21 +3,21 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>プロジェクト一覧</title>
-  <link rel="stylesheet" href="style2.css">
+  <title>社員限定ページ</title>
+  <link rel="stylesheet" href="style1.css">
 </head>
 <body>
   <!-- ログイン画面 -->
   <div id="loginArea">
     <h1>社用Googleアカウントでログインしてください</h1>
-    <button id="loginBtn" class="btn">ログイン</button>
+    <button id="loginBtn">ログイン</button>
   </div>
 
   <!-- ログイン後に表示されるページ -->
   <div id="content" style="display:none;">
     <!-- ヘッダー -->
     <header>
-      <h1>プロジェクト一覧</h1>
+      <h1>社内プロジェクト一覧</h1>
       <nav>
         <a href="SBJ3.html">SBJ</a>
         <a href="MCCM3.html">MCCM</a>
@@ -29,34 +29,35 @@
 
     <!-- プロジェクト一覧 -->
     <div class="container">
+      <h2>プロジェクト一覧</h2>
       <div class="card-grid" id="projectList">
         <div class="cardd">
           <img src="images/starbacks.jpg">
           <h3>SBJ</h3>
           <a href="SBJ3.html">相関図へ</a>
-          <p>オンラインストア、店舗など様々なクライアントの決済処理を統合するPaymentHubを提供</p>
+          <p>オンラインストア、店舗など様々なクライアントの決済処理を統合し、スターバックスカードやクレジットカードなどの接続先へ繋ぐPaymentHubを提供</p>
         </div>
         <div class="cardd">
           <img src="images/matukiyo.png">
           <h3>MCCM</h3>
           <a href="MCCM3.html">相関図へ</a>
-          <p>ドラッグストア業界に対してポイント管理や顧客管理などを提供</p>
+          <p>顧客管理を中心に様々なサービスを提供、顧客の満足度向上を目指す</p>
         </div>
         <div class="cardd">
           <img src="images/JFA.jpg">
           <h3>JFA</h3>
           <a href="JFA3.html">相関図へ</a>
-          <p>新規プロジェクト、サッカー協会との仕事（仮）</p>
+          <p>JFA業務内容（新規PJのため内容は定かじゃない）</p>
         </div>
         <div class="cardd">
           <img src="images/oota.png">
           <h3>新規営業</h3>
           <a href="eigyou3.html">相関図へ</a>
-          <p>（仮）</p>
+          <p>お客様との関係を構築し新たなサービスを共創する</p>
         </div>
       </div>
     </div>
-    <button id="logoutBtn" class="btn">ログアウト</button>
+    <button id="logoutBtn">ログアウト</button>
   </div>
 
   <script type="module">
@@ -125,18 +126,5 @@
     });
   </script>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
