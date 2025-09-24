@@ -97,7 +97,7 @@
         const result = await signInWithPopup(auth, provider);
         const email = result.user.email;
         if (!isEmployee(email)) {
-          alert("社員専用アカウントのみ利用可能です");
+          alert("社員Googleアカウントのみ利用可能です。");
           await signOut(auth);
           loginArea.style.display = "block";
           content.style.display = "none";
@@ -126,6 +126,7 @@
     });
   </script>
 </body>
+
 
 
 
