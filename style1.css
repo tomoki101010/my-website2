@@ -58,7 +58,6 @@ nav a:hover {
     width: 100%;            /* 枠いっぱいに画像を表示 */
     max-height: 200px;
     object-fit: contain;
-    border-radius: 12px;
     margin-bottom: 10px;
     background: #fff;
 }
